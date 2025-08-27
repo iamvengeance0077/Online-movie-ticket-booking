@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="icon" href="./resource/img/film-rollico.png">
+    <link rel="stylesheet" href="booking.css">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            min-height: 100vh;
+            background: #f1f3f6;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+        body {
+            min-height: 100vh;
+            width: 100vw;
+            box-sizing: border-box;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+        .flipkart-payment-container {
+            width: 100vw;
+            min-height: 100vh;
+            margin: 0;
+            background: #fff;
+            border-radius: 0;
+            box-shadow: none;
+            display: flex;
+            flex-direction: row;
+            max-width: 100vw;
+            overflow-x: auto;
+            overflow-y: visible;
+        }
+        .payment-left, .payment-right {
+            min-width: 0;
+            box-sizing: border-box;
+        }
+        .payment-left {
+            flex: 2;
+            padding: 36px 32px 32px 32px;
+            border-right: 1.5px solid #e0e0e0;
+            min-height: 100vh;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            max-width: 60vw;
+        }
+        .payment-right {
+            flex: 1.2;
+            padding: 36px 24px 32px 24px;
+            background: #fafafa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            max-width: 40vw;
+        }
+        .payment-title {
+            font-size: 2em;
+            font-weight: 700;
+            color: #212121;
+            margin-bottom: 24px;
+        }
+        .payment-section-title {
+            font-size: 1.15em;
+            font-weight: 600;
+            color: #2874f0;
+            margin-bottom: 12px;
+            margin-top: 32px;
+        }
+        .payment-methods label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 18px;
+            font-size: 1.13em;
+            cursor: pointer;
+            color: #212121;
+        }
+        .payment-methods input[type="radio"] {
+            margin-right: 12px;
+        }
+        .payment-details label {
+            display: block;
+            margin-bottom: 8px;
+            color: #757575;
+        }
+        .payment-details input {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1.5px solid #cfd8dc;
+            border-radius: 4px;
+            font-size: 1.08em;
+            margin-bottom: 18px;
+            background: #fff;
+            color: #212121;
+        }
+        .flipkart-pay-btn {
+            width: 100%;
+            background: #fb641b;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.18em;
+            font-weight: 700;
+            padding: 15px 0;
+            margin-top: 18px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(251,100,27,0.13);
+            transition: background 0.2s;
+        }
+        .flipkart-pay-btn:hover {
+            background: #f57224;
+        }
+        .order-summary {
+            background: #fff;
+            border: 1.5px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 24px 28px 18px 28px;
+            margin-bottom: 32px;
+            font-size: 1.13em;
+            box-shadow: 0 1px 4px rgba(40,116,240,0.04);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .order-summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4px 0;
+        }
+        .order-summary strong {
+            color: #212121;
+        }
+        .order-summary span {
+            color: #2874f0;
+            font-weight: bold;
+        }
+        .order-details {
+            margin-top: 18px;
+            font-size: 1.05em;
+            color: #555;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .order-details-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .ticket-success {
+            display: none;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .tick {
+            width: 80px;
+            height: 80px;
+            display: inline-block;
+        }
+        .tick svg {
+            width: 100%;
+            height: 100%;
+        }
+        .tick-animate {
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+            animation: dash 1s forwards;
+        }
+        @keyframes dash {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+        .ticket-success h3 {
+            color: #43a047;
+            font-size: 1.4em;
+        }
+        .support-box {
+            background: #e3f0ff;
+            border: 1px solid #b3d7ff;
+            border-radius: 6px;
+            padding: 16px 18px;
+            margin-top: 32px;
+            color: #2874f0;
+            font-size: 1.08em;
+        }
+        .secure-badge {
+            display: flex;
+            align-items: center;
+            margin-top: 18px;
+            color: #388e3c;
+            font-weight: 600;
+            font-size: 1.05em;
+        }
+        .secure-badge img {
+            width: 22px;
+            height: 22px;
+            margin-right: 8px;
+        }
+        @media (max-width: 900px) {
+            .flipkart-payment-container {
+                flex-direction: column;
+                width: 100vw;
+                max-width: 100vw;
+            }
+            .payment-left, .payment-right {
+                border: none;
+                padding: 24px 4vw 24px 4vw;
+                min-height: unset;
+                max-width: 100vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="flipkart-payment-container">
+        <div class="payment-left">
+            <div class="payment-title">Payment Options</div>
+            <form id="paymentForm">
+                <div class="payment-section-title">Select Payment Method</div>
+                <div class="payment-methods">
+                    <label><input type="radio" name="paymentType" value="UPI" checked> UPI</label>
+                    <label><input type="radio" name="paymentType" value="Bank"> Bank Transfer</label>
+                    <label><input type="radio" name="paymentType" value="Card"> Credit/Debit Card</label>
+                    <label><input type="radio" name="paymentType" value="Wallet"> Wallet</label>
+                </div>
+                <div class="payment-section-title">Enter Details</div>
+                <div class="payment-details" id="paymentDetails"></div>
+                <button type="submit" class="flipkart-pay-btn">Pay Now</button>
+            </form>
+            <div class="secure-badge">
+                <img src="https://img.icons8.com/color/48/000000/lock--v1.png" alt="secure">100% Secure Payments
+            </div>
+            <div class="support-box">
+                <strong>Need Help?</strong><br>
+                Call 1800-123-4567 or email <a href="mailto:support@movietickets.com" style="color:#2874f0;">support@movietickets.com</a><br>
+                24x7 Customer Support
+            </div>
+            <div class="ticket-success" id="ticketSuccess">
+                <div class="tick">
+                    <svg viewBox="0 0 52 52">
+                        <circle cx="26" cy="26" r="25" fill="none" stroke="#43a047" stroke-width="3"/>
+                        <path class="tick-animate" fill="none" stroke="#43a047" stroke-width="4" d="M14 27 l8 8 l16 -16"/>
+                    </svg>
+                </div>
+                <h3>Payment Successful!<br>Your Ticket is Booked.</h3>
+            </div>
+        </div>
+        <div class="payment-right">
+            <div class="payment-title" style="font-size:1.2em; color:#2874f0; margin-bottom:18px;">Order Summary</div>
+            <div class="order-summary" id="orderSummary">
+                <div class="order-summary-row"><strong>Movie:</strong> <span id="summaryMovie">-</span></div>
+                <div class="order-summary-row"><strong>Seats:</strong> <span id="summarySeats">-</span></div>
+                <div class="order-summary-row"><strong>Date:</strong> <span id="summaryDate">-</span></div>
+                <div class="order-summary-row"><strong>Time:</strong> <span id="summaryTime">-</span></div>
+                <div class="order-summary-row"><strong>Total:</strong> <span id="summaryTotal">-</span></div>
+            </div>
+            <div class="order-details">
+                <div class="order-details-row"><strong>Convenience Fee:</strong> <span id="summaryFee">₹20</span></div>
+                <div class="order-details-row"><strong>GST (18%):</strong> <span id="summaryGST">-</span></div>
+                <div class="order-details-row"><strong>Grand Total:</strong> <span id="summaryGrand">-</span></div>
+                <div class="order-details-row"><strong>Booking Date:</strong> <span id="summaryBookDate">-</span></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <script>
+        // Fill order summary from localStorage
+        const ticketPrice = parseInt(localStorage.getItem('ticketPrice')) || 0;
+        const seats = localStorage.getItem('selectedSeats') || '-';
+        const numSeats = seats === '-' ? 0 : seats.split(',').length;
+        const total = parseInt(localStorage.getItem('totalPrice')) || 0;
+        const fee = 20;
+        const gst = Math.round((total + fee) * 0.18);
+        const grand = total + fee + gst;
+        const today = new Date();
+        const bookDate = today.toLocaleDateString() + ' ' + today.toLocaleTimeString();
+        document.getElementById('summaryMovie').textContent = localStorage.getItem('selectedMovie') || '-';
+        document.getElementById('summarySeats').textContent = seats;
+        document.getElementById('summaryDate').textContent = localStorage.getItem('selectedDate') || '-';
+        document.getElementById('summaryTime').textContent = localStorage.getItem('selectedTime') || '-';
+        document.getElementById('summaryTotal').textContent = total ? '₹' + total : '-';
+        document.getElementById('summaryFee').textContent = '₹' + fee;
+        document.getElementById('summaryGST').textContent = '₹' + gst;
+        document.getElementById('summaryGrand').textContent = '₹' + grand;
+        document.getElementById('summaryBookDate').textContent = bookDate;
+
+        const paymentDetails = document.getElementById('paymentDetails');
+        const paymentForm = document.getElementById('paymentForm');
+        const ticketSuccess = document.getElementById('ticketSuccess');
+
+        function renderFields(type) {
+            let html = '';
+            if (type === 'UPI') {
+                html = `<label>UPI ID:<input type="text" name="upiId" required placeholder="e.g. username@bank"></label>`;
+            } else if (type === 'Bank') {
+                html = `<label>Account Number:<input type="text" name="accountNumber" required placeholder="Enter account number"></label>
+                        <label>IFSC Code:<input type="text" name="ifsc" required placeholder="e.g. SBIN0001234"></label>`;
+            } else if (type === 'Card') {
+                html = `<label>Card Number:<input type="text" name="cardNumber" required placeholder="XXXX XXXX XXXX XXXX"></label>
+                        <label>Expiry Date:<input type="text" name="expiry" placeholder="MM/YY" required></label>
+                        <label>CVV:<input type="password" name="cvv" required placeholder="CVV"></label>`;
+            } else if (type === 'Wallet') {
+                html = `<label>Wallet Provider:<input type="text" name="walletProvider" required placeholder="e.g. Paytm, PhonePe"></label>
+                        <label>Wallet Number:<input type="text" name="walletNumber" required placeholder="Enter wallet number"></label>`;
+            }
+            paymentDetails.innerHTML = html;
+        }
+        // Initial render
+        renderFields('UPI');
+        document.querySelectorAll('input[name="paymentType"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                renderFields(e.target.value);
+            });
+        });
+        paymentForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Validate payment details fields and format
+            const paymentType = document.querySelector('input[name="paymentType"]:checked').value;
+            let valid = true;
+            let errorMsg = document.getElementById('payment-error-msg');
+            if (errorMsg) errorMsg.remove();
+            let formatMsg = '';
+            if (paymentType === 'UPI') {
+                const upiId = paymentForm.querySelector('input[name="upiId"]');
+                // UPI format: something@bank (simple regex)
+                const upiPattern = /^[\w.-]+@[\w.-]+$/;
+                if (!upiId || !upiId.value.trim() || !upiPattern.test(upiId.value.trim())) {
+                    valid = false;
+                    formatMsg = 'Enter a valid UPI ID (e.g. username@bank).';
+                }
+            } else if (paymentType === 'Bank') {
+                const acc = paymentForm.querySelector('input[name="accountNumber"]');
+                const ifsc = paymentForm.querySelector('input[name="ifsc"]');
+                // Account: 9-18 digits, IFSC: 4 letters + 0 + 6 digits
+                const accPattern = /^\d{9,18}$/;
+                const ifscPattern = /^[A-Z]{4}0\d{6}$/i;
+                if (!acc || !acc.value.trim() || !accPattern.test(acc.value.trim())) {
+                    valid = false;
+                    formatMsg = 'Enter a valid Account Number (9-18 digits).';
+                } else if (!ifsc || !ifsc.value.trim() || !ifscPattern.test(ifsc.value.trim())) {
+                    valid = false;
+                    formatMsg = 'Enter a valid IFSC Code (e.g. SBIN0001234).';
+                }
+            } else if (paymentType === 'Card') {
+                const card = paymentForm.querySelector('input[name="cardNumber"]');
+                const expiry = paymentForm.querySelector('input[name="expiry"]');
+                const cvv = paymentForm.querySelector('input[name="cvv"]');
+                // Card: 16 digits, Expiry: MM/YY, CVV: 3 digits
+                const cardPattern = /^\d{16}$/;
+                const expiryPattern = /^(0[1-9]|1[0-2])\/(\d{2})$/;
+                const cvvPattern = /^\d{3}$/;
+                if (!card || !card.value.trim() || !cardPattern.test(card.value.replace(/\s+/g, ''))) {
+                    valid = false;
+                    formatMsg = 'Enter a valid 16-digit Card Number.';
+                } else if (!expiry || !expiry.value.trim() || !expiryPattern.test(expiry.value.trim())) {
+                    valid = false;
+                    formatMsg = 'Enter a valid Expiry Date (MM/YY).';
+                } else if (!cvv || !cvv.value.trim() || !cvvPattern.test(cvv.value.trim())) {
+                    valid = false;
+                    formatMsg = 'Enter a valid 3-digit CVV.';
+                }
+            } else if (paymentType === 'Wallet') {
+                const provider = paymentForm.querySelector('input[name="walletProvider"]');
+                const number = paymentForm.querySelector('input[name="walletNumber"]');
+                // Wallet number: 10 digits
+                const walletPattern = /^\d{10}$/;
+                if (!provider || !provider.value.trim()) {
+                    valid = false;
+                    formatMsg = 'Enter a valid Wallet Provider.';
+                } else if (!number || !number.value.trim() || !walletPattern.test(number.value.trim())) {
+                    valid = false;
+                    formatMsg = 'Enter a valid 10-digit Wallet Number.';
+                }
+            }
+            if (!valid) {
+                errorMsg = document.createElement('div');
+                errorMsg.id = 'payment-error-msg';
+                errorMsg.textContent = formatMsg || 'Please fill in all required payment details.';
+                errorMsg.style.color = 'red';
+                errorMsg.style.textAlign = 'center';
+                errorMsg.style.margin = '10px 0 16px 0';
+                paymentForm.insertBefore(errorMsg, paymentForm.querySelector('.flipkart-pay-btn'));
+                return;
+            }
+            // PDF generation with QR code
+            const doc = new window.jspdf.jsPDF();
+            const pageWidth = doc.internal.pageSize.getWidth();
+            const pageHeight = doc.internal.pageSize.getHeight();
+            // Draw thick golden border
+            doc.setLineWidth(6);
+            doc.setDrawColor(255, 215, 0); // Gold color
+            doc.rect(8, 8, pageWidth - 16, pageHeight - 16, 'S');
+            // Heading (centered, large, bold, E-ticket)
+            doc.setFontSize(28);
+            doc.setFont('helvetica', 'bold');
+            const heading = 'E-ticket';
+            const headingWidth = doc.getTextWidth(heading);
+            doc.text(heading, (pageWidth - headingWidth) / 2, 32);
+            // Left-aligned and right-aligned details
+            let y = 55;
+            function detailRow(label, value, fontSize = 15, gap = 13) {
+                doc.setFontSize(fontSize);
+                doc.setFont('helvetica', 'bold');
+                // Left: label, Right: value
+                doc.text(label + ':', 20, y, {align: 'left'});
+                doc.text(String(value), pageWidth - 20, y, {align: 'right'});
+                y += gap;
+            }
+            // Get ticket/order details
+            const movie = localStorage.getItem('selectedMovie') || '-';
+            const seats = localStorage.getItem('selectedSeats') || '-';
+            const date = localStorage.getItem('selectedDate') || '-';
+            const time = localStorage.getItem('selectedTime') || '-';
+            const total = localStorage.getItem('totalPrice') || '-';
+            const today = new Date();
+            const bookDate = today.toLocaleDateString() + ' ' + today.toLocaleTimeString();
+            detailRow('Movie', movie, 16);
+            detailRow('Seat Number(s)', seats, 15);
+            detailRow('Date', date, 15);
+            detailRow('Time', time, 15);
+            detailRow('Total Paid', '₹' + total, 15);
+            detailRow('Booking Date', bookDate, 13);
+            // Generate QR code with ticket info
+            const qr = new QRious({
+                value: `Movie: ${movie}\nSeats: ${seats}\nDate: ${date}\nTime: ${time}\nTotal: ₹${total}`,
+                size: 120,
+                background: 'white',
+                foreground: 'black',
+                level: 'H'
+            });
+            // Add QR code image to PDF (centered horizontally near bottom)
+            const qrImg = qr.toDataURL();
+            const qrWidth = 100;
+            const qrX = (pageWidth - qrWidth) / 2;
+            const qrY = pageHeight - 140;
+            doc.addImage(qrImg, 'PNG', qrX, qrY, qrWidth, qrWidth);
+            // Footer message (bold, centered, larger)
+            doc.setFontSize(18);
+            doc.setFont(undefined, 'bold');
+            const enjoyMsg = 'Enjoy your movie!';
+            const enjoyWidth = doc.getTextWidth(enjoyMsg);
+            doc.text(enjoyMsg, (pageWidth - enjoyWidth) / 2, y + 20);
+            doc.save('ticket.pdf');
+            paymentForm.style.display = 'none';
+            ticketSuccess.style.display = 'block';
+            setTimeout(() => {
+                document.querySelector('.tick-animate').style.strokeDashoffset = 0;
+            }, 100);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login & Movie Management</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="icon" href="./resource/img/film-rollico.png">
+    <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing:border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #232526 0%, #ffb300 100%);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .admin-login-container {
+            background: rgba(34, 40, 49, 0.98);
+            border-radius: 22px;
+            box-shadow: 0 10px 48px 0 rgba(0,0,0,0.30), 0 2px 12px 0 #ffb300;
+            padding: 56px 44px 44px 44px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .admin-login-container::before {
+            content: '';
+            position: absolute;
+            top: -60px; left: -60px;
+            width: 160px; height: 160px;
+            background: radial-gradient(circle, #ffb300 0%, transparent 70%);
+            opacity: 0.18;
+            z-index: 0;
+        }
+        .admin-login-logo {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 22px;
+            filter: drop-shadow(0 2px 8px #ffb30088);
+        }
+        .admin-login-title {
+            font-size: 2.3em;
+            font-weight: 800;
+            color: #ffb300;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 8px #ffb30033;
+        }
+        .admin-login-desc {
+            color: #e0e0e0;
+            font-size: 1.13em;
+            margin-bottom: 32px;
+            font-weight: 500;
+        }
+        .admin-login-form label {
+            display: block;
+            color: #ffb300;
+            font-weight: 700;
+            margin-bottom: 7px;
+            text-align: left;
+            letter-spacing: 0.5px;
+        }
+        .admin-login-form input {
+            width: 100%;
+            padding: 13px 15px;
+            border: 1.7px solid #616161;
+            border-radius: 7px;
+            background: #232526;
+            color: #fff;
+            font-size: 1.13em;
+            margin-bottom: 22px;
+            transition: border 0.2s, box-shadow 0.2s;
+            box-shadow: 0 1px 4px #0002;
+        }
+        .admin-login-form input:focus {
+            border: 1.7px solid #ffb300;
+            outline: none;
+            box-shadow: 0 0 0 2px #ffb30033;
+        }
+        .admin-login-form button {
+            width: 100%;
+            background: linear-gradient(90deg, #ffb300 60%, #ffd54f 100%);
+            color: #232526;
+            border: none;
+            border-radius: 7px;
+            font-size: 1.22em;
+            font-weight: 800;
+            padding: 15px 0;
+            margin-top: 10px;
+            cursor: pointer;
+            box-shadow: 0 2px 12px rgba(255,179,0,0.18);
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+            letter-spacing: 1px;
+        }
+        .admin-login-form button:hover {
+            background: linear-gradient(90deg, #ffd54f 60%, #ffb300 100%);
+            color: #232526;
+            box-shadow: 0 4px 18px #ffb30055;
+        }
+        .admin-login-footer {
+            margin-top: 38px;
+            color: #bdbdbd;
+            font-size: 1.05em;
+            letter-spacing: 0.5px;
+        }
+        @media (max-width: 500px) {
+            .admin-login-container {
+                padding: 28px 4vw 28px 4vw;
+            }
+            .admin-login-title {
+                font-size: 1.5em;
+            }
+        }
+
+        .admin-container {
+            max-width: 420px;
+            margin: 40px auto 0 auto;
+            background:transparent;
+            border-radius: 12px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+            padding: 32px 32px 24px 32px;
+            border: 2px solid #FFD700;
+            
+        }
+        h2 {
+            color: #FFD700;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        label {
+            color: #FFD700;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 6px;
+        }
+        input[type="text"], input[type="password"], input[type="number"], input[type="url"] {
+            width: 100%;
+            padding: 8px 12px;
+            margin-bottom: 18px;
+            border: 1px solid #FFD700;
+            border-radius: 4px;
+            background: #111;
+            color: #FFD700;
+            font-size: 1em;
+        }
+
+        input[type="text"], input[type="password"], input[type="number"], input[type="url"] :focus{
+            outline: none;;
+        }
+
+        button {
+            background: #FFD700;
+            color: #111;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 24px;
+            font-size: 1.1em;
+            font-family: 'Gugi', cursive, sans-serif;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background: rgb(19, 19, 19);
+            color:gold;
+            transition: 0.2s;
+            
+        }
+
+        button:active {
+            background: #FFD700;
+            color: #111;
+        }
+
+
+        .movie-form {
+            margin-top: 32px;
+            display: none;
+        }
+        .movie-list {
+            margin-top: 40px;
+        }
+        .moviedetails {
+            background: #181818;
+            border: 1px solid #FFD700;
+            border-radius: 8px;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            color: #FFD700;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        }
+        .movimg {
+            width: 90px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px 0 0 8px;
+            border-right: 2px solid #FFD700;
+            background: #222;
+        }
+        .details {
+            padding: 16px 18px;
+            flex: 1;
+        }
+        .details p {
+            margin: 0 0 6px 0;
+            color: #FFD700;
+        }
+        .ratings {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .ratings svg {
+            width: 18px;
+            height: 18px;
+            margin-right: 6px;
+        }
+        .playbtn a svg {
+            width: 28px;
+            height: 28px;
+        }
+        .playbtn a {
+            display: inline-block;
+        }
+
+        .file{
+            margin-top: 5px;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, gold 60%, yellow 100%);
+            color: #111;
+            border: 2px solid gold;
+            border-radius: 6px;
+            padding: 7px 10px;
+            font-weight: bold;
+            font-size: 1em;
+            box-shadow: 0 1px 6px 0 #FFD70044;
+        }
+        .file::-webkit-file-upload-button {
+            background: gold;
+            color: #111;
+            border: 1px solid yellow;
+            border-radius: 4px;
+            padding: 6px 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .file:hover, .file:focus {
+            background: linear-gradient(90deg, yellow 60%, gold 100%);
+            border-color: yellow;
+        }
+        .file::-webkit-file-upload-button:hover {
+            background: black;
+            color: gold;
+            border-color: gold;
+            transition: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-login-container">
+        <img src="./resource/img/film-rollico.png" alt="Logo" class="admin-login-logo">
+        <h2 class="admin-login-title">Admin Login</h2>
+        <p class="admin-login-desc">Access the movie management system</p>
+        <form id="admin-login-form" class="admin-login-form">
+            <label for="admin-username">Username</label>
+            <input type="text" id="admin-username" required>
+            <label for="admin-password">Password</label>
+            <input type="password" id="admin-password" required>
+            <button type="submit">Login</button>
+        </form>
+        <form id="movie-form" class="movie-form" enctype="multipart/form-data">
+            <h2>Add Movie</h2>
+            <label for="title">Movie Name</label>
+            <input type="text" id="title" required>
+            <label for="runtime">Runtime</label>
+            <input type="text" id="runtime" required placeholder="e.g. 2h 30m">
+            <label for="rating">Rating</label>
+            <input type="text" id="rating" required placeholder="e.g. 8.5">
+            <label for="img">Image (PNG only)</label>
+            <input class="file" type="file" id="img" accept="image/png" required>
+            <label for="link">Trailer Link (YouTube)</label>
+            <input type="url" id="link" required>
+            <label for="price">Ticket Price</label>
+            <input type="number" id="price" required min="0">
+            <button type="submit">Add Movie</button>
+        </form>
+        <div class="movie-list" id="movie-list"></div>
+    </div>
+    <script src="admin.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking-Ticket</title>
+    <link rel="icon" href="./resource/img/film-rollico.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="booking.css">
+</head>
+<body>
+    <div class="top">
+        <img class="logo" src="./resource/img/film-roll.png">
+        <p>E-ticket</p>
+    </div>
+    <div class="container">
+        <div class="screencontainer">
+            <div class="screen"></div>
+        </div>
+        <div class="row">
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+        </div>
+        <div class="row">
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+        </div>
+        <div class="row">
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+        </div>
+        <div class="row">
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+        </div>
+        <div class="row">
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+        </div>
+        <div class="row">
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+        </div>
+        <div class="row">
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+        </div>
+        <div class="row">
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+        </div>
+        <div class="info">
+            <div class="infocontainer">
+                <div class="inforow1"></div>
+                <span>Available</span>
+            </div>
+            <div class="infocontainer">
+                <div class="inforow2 selected"></div>
+            <span>Selected</span>
+            </div>
+            <div class="infocontainer">
+                <div class="inforow3"></div>
+            <span>Occupied</span>
+            </div>
+        </div>
+        <div class="para">
+            <p><span id="count">0</span> Tickets</p>
+            <p>Price <span id="total">0</span></p>
+        </div>
+        <div class="right-panel" style="position: absolute; top: 8cm; right: -7.5cm; width: 260px; background: #f8f8f8; border: 1px solid #ccc; border-radius: 8px; padding: 24px 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); min-height: 200px;">
+            <div class="date-time-picker" style="margin-bottom: 24px; text-align: left;">
+                <label for="movie-date" style="margin-right: 8px;">Select Date:</label>
+                <input type="date" id="movie-date" name="movie-date" min="2025-05-15" required style="margin-bottom: 16px; width: 100%;">
+                <label for="movie-time" style="margin-right: 8px;">Select Time:</label>
+                <select id="movie-time" name="movie-time" required style="width: 100%;">
+                    <option value="">Select show time</option>
+                    <option value="10:00">10:00 AM</option>
+                    <option value="14:00">2:00 PM</option>
+                    <option value="18:00">6:00 PM</option>
+                </select>
+            </div>
+            <div class="book-btn-container" style="text-align: center;">
+                <button id="bookNowBtn">Book Ticket</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="booking.js"></script>
+    <!-- <script src="booking-pdf.js"></script> -->
+</body>
+</html>

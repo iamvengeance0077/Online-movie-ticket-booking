@@ -1,0 +1,200 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background-color: rgb(35, 33, 33);
+    padding-top: 50px;
+}
+
+.top{
+    background-image: linear-gradient(gold,yellow);
+    top:0;
+    right: 0;
+    left: 0;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 2px 2px 10px 5px black;
+    z-index:2;
+}
+.logoutlogo svg{
+    height: 30px;
+    width: 30px;
+    margin-left: 10px;
+}
+
+.logoutlogo svg:hover{
+    transform: scale(1.03);
+    transition: 0.5s ;
+}
+
+.searchbar{
+    height: 30px;
+    width: 300px;
+    border-radius: 10px;
+    border: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 15px;
+    margin-right: 10px;
+    box-shadow:0px 0px 5px black;
+}
+
+.searchbar:focus{
+    outline: none;
+}
+
+.top p{
+        font-family: "Gugi", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 30px;
+}
+
+
+.logo{
+    height: 50px;
+}
+
+.logo-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 285px;
+}
+
+h1,.h3{
+    color: white;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+.allmovieh3{
+    color: white;
+    margin-top: 30px;
+    margin-left: 10px;
+    ;
+}
+
+h1,.h3,.allmovieh3:hover{
+    cursor: default;
+}
+
+.container,.container2{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    margin-top: 12px;
+    padding: auto;
+    margin-left: 10px;
+    row-gap: 30px;
+    column-gap: 20px; 
+}
+
+
+.moviedetails{
+    height: 450px;
+    width: 220px;
+    background-color: black;
+    color: white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 2px 2px 10px 5px black;
+    position: relative;
+}
+
+.moviedetails:hover{
+    transition: 0.5s ease;
+    box-shadow:2px 2px 10px 10px black;
+    transform: scale(1.02);
+}
+
+.movimg{
+    opacity: 0.5;
+    transition: 0.5s ease;
+    
+}
+
+.ratings svg{
+    height: 13px;
+}
+
+.playbtn{
+    width: 50px;
+    position: absolute;
+    top: 140px;
+    right: 90px;
+    
+}
+
+.playbtn:hover{
+    transform: scale(1.1);
+    transition: 0.5s ease;
+    cursor: pointer;
+    
+}
+
+.playbtn:active{
+    opacity: 0.5;
+}
+
+.details{
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.bookbtn{
+    background-color: gold;
+    color: black;
+    border-radius: 10px;
+    height: 30px;
+    width: 150px;
+    margin-left: 31px;
+    margin-top: 5px;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+
+.bookbtn:hover{
+    background-color: black;
+    color: gold;
+    transition: 0.5s ease;
+    border: 2px solid gold; 
+}
+
+.bookbtn:active{
+    background-color: gold;
+    color: black;
+    transition: 0.2s ease;
+}
+
+
+.footer{
+    width: 100%;
+    height: 100px;
+    background-color: black;
+    color: white;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 10px 5px black;
+}
+
+.footer:hover{
+    cursor: default;
+}
+
+span,p:hover{
+    cursor: default;
+}
